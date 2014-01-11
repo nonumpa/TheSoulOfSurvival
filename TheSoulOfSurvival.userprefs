@@ -1,0 +1,19 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\PlayerController.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Skill.cs" Line="17" Column="30" />
+      <File FileName="Assets\Monster\Monster.cs" Line="44" Column="1" />
+      <File FileName="Assets\Scripts\UI\Play\SoulBar.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\soul_get.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\PlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\UI\Play\TimeAndStart.cs" Line="13" Column="76" />
+      <File FileName="Assets\Scripts\UI\Finish\ComputeScore.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MainScript.cs" Line="4" Column="24" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
