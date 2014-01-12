@@ -10,10 +10,18 @@ public class Skill : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(ScriptCtrl.NumOfSoulGet < ScriptCtrl.WhenToUseSkill){
+			ScriptCtrl.skillEnable = false;
+		}
+		else{
+			ScriptCtrl.skillEnable = true;
+		}
 	}
 
 	void OnClick(){
-		ScriptCtrl.useSkill = true;
+		if(ScriptCtrl.skillEnable){
+			ScriptCtrl.useSkill = true;
+			ScriptCtrl.SkillFinishTime = Time.time + ScriptCtrl.skillDuration;
+		}
 	}
 }

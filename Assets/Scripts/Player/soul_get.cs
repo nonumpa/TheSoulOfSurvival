@@ -4,7 +4,7 @@ using System.Collections;
 public class soul_get : MonoBehaviour {
 	MainScript ScriptCtrl;
 	int totalSoul=100;
-	int SoulNum=0;
+	//int =0;
 	public float percentageOfSoul=0.0f;
 	public GameObject winTitle,minimap,score;
 	// Use this for initialization
@@ -19,10 +19,10 @@ public class soul_get : MonoBehaviour {
 	 void OnTriggerEnter(Collider other) {
         if(other.tag=="soul")
 		{
-			SoulNum++;
-			if(SoulNum>0)percentageOfSoul= (float)SoulNum/(float)totalSoul;
+			ScriptCtrl.NumOfSoulGet++;
+			if(ScriptCtrl.NumOfSoulGet>0)percentageOfSoul= (float)ScriptCtrl.NumOfSoulGet/(float)totalSoul;
 			Destroy(other.gameObject);
-			if(SoulNum == totalSoul){
+			if(ScriptCtrl.NumOfSoulGet == totalSoul){
 				YouWin();
 			}
 		}

@@ -104,12 +104,18 @@ public class PlayerController : MonoBehaviour
 	public Transform [] transPos = new Transform[4]; //front, back, right ,left
 	public GameObject loseBtn,minimap,score;
 	public Texture PlayerDieTexture;
+	public GameObject Skill;
 
 	float startTime;
 	bool  couldBeSwipe;
+	bool  skillFlicker = false;
 	float comfortZone;
 	float minSwipeDist;
 	float getKeyTime;
+	float nextFlicker;
+
+
+
 	ControllerColliderHit collide;
 	ControllerColliderHit hitTemp;
 	
@@ -342,7 +348,34 @@ public class PlayerController : MonoBehaviour
 	}
 
 	void Update ()
-	{
+	{	
+
+		if(ScriptCtrl.useSkill){
+			if(Time.time > ScriptCtrl.SkillFinishTime){
+				ScriptCtrl.useSkill = false;
+				//FlickerTimes=0;
+				print("end");
+			}
+
+			if(ScriptCtrl.useSkill && (Time.time > ScriptCtrl.SkillFinishTime-4f) && Time.time > nextFlicker){
+				nextFlicker = Time.time+0.2f;
+				//FlickerTimes++;
+				skillFlicker = !skillFlicker;
+				NGUITools.SetActive(Skill,skillFlicker);
+				print ("flicker");
+			}
+			else if(ScriptCtrl.useSkill && (Time.time < ScriptCtrl.SkillFinishTime-3f)){
+				NGUITools.SetActive(Skill,true);
+				speed = 14f;
+				print("start");
+			}
+			else if(!ScriptCtrl.useSkill){
+				NGUITools.SetActive(Skill,false);
+				speed = 7f;
+				print("dieable");
+			}
+			
+		}
 		if (!isControllable)
 		{
 			// kill all inputs if not controllable.
@@ -579,7 +612,7 @@ public class PlayerController : MonoBehaviour
 
 		if(other.collider.tag == "canturn")
        		turnRL();
-		if(other.collider.tag == "Monster"){
+		if(!ScriptCtrl.useSkill && other.collider.tag == "Monster"){
 			if(jumping){
 				//move game object to some where
 				Destroy(other.gameObject);
